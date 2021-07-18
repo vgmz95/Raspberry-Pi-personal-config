@@ -1,2 +1,2 @@
-# rpi_personalconfig
-Personal config for my raspberry pi
+# Raspberry Pi personal configuration
+Personal config for my Raspberry Pi
