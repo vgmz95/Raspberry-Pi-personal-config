@@ -7,10 +7,12 @@ services:
     image: pihole/pihole:latest
     environment:
       TZ: 'America/Mexico_City'
-      WEBPASSWORD: 'password'
+      WEBPASSWORD: 'admin'
       network_mode: host
-      ServerIP: ''
-      ServerIPv6: ''
+      ServerIP: '' #change accordingly
+      ServerIPv6: '' #change accordingly
+      DNS1: "127.0.0.1#5300"
+      DNS2: "no"
     network_mode: host
     # Volumes store your data between container upgrades
     volumes:
@@ -20,4 +22,18 @@ services:
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     cap_add:
       - NET_ADMIN
+    restart: unless-stopped
+    depends_on:
+      - dnscrypt
+
+  dnscrypt:
+    container_name: dnscrypt-proxy
+    image: klutchell/dnscrypt-proxy:latest
+    network_mode: host
+    environment:
+      TZ: 'America/Mexico_City'
+    volumes:
+      - './etc-dnscrypt-proxy:/config'
+    dns:
+      - 1.1.1.1
     restart: unless-stopped
