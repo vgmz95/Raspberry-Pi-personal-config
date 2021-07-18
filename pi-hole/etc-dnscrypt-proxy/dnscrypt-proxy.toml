@@ -29,7 +29,7 @@
 ##
 ## Remove the leading # first to enable this; lines starting with # are ignored.
 
-# server_names = ['scaleway-fr', 'google', 'yandex', 'cloudflare']
+server_names = ['nextdns', 'cloudflare-ipv6', 'quad9-dnscrypt-ip4-nofilter-pri', 'quad9-doh-ip6-nofilter-pri', 'he', 'cs-tx', 'quad9-doh-ip4-nofilter-pri', 'google', 'google-ipv6', 'comodo-02', 'cloudflare']
 
 
 ## List of local addresses and ports to listen to. Can be IPv4 and/or IPv6.
@@ -58,7 +58,7 @@ max_clients = 250
 ipv4_servers = true
 
 # Use servers reachable over IPv6 -- Do not enable if you don't have IPv6 connectivity
-ipv6_servers = false
+ipv6_servers = true
 
 # Use servers implementing the DNSCrypt protocol
 dnscrypt_servers = true
@@ -353,7 +353,7 @@ reject_ttl = 600
 
 ## Enable a DNS cache to reduce latency and outgoing traffic
 
-cache = true
+cache = false
 
 
 ## Cache size

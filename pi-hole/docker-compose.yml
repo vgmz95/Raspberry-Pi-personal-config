@@ -1,19 +1,23 @@
-version: "3"
-
 # More info at https://github.com/pi-hole/docker-pi-hole/ and https://docs.pi-hole.net/
 services:
   pihole:
     container_name: pihole
     image: pihole/pihole:latest
+    network_mode: host
     environment:
       TZ: 'America/Mexico_City'
       WEBPASSWORD: 'admin'
       network_mode: host
-      ServerIP: '' #change accordingly
+      ServerIP: '192.168.100.2' #change accordingly
       ServerIPv6: '' #change accordingly
-      DNS1: "127.0.0.1#5300"
-      DNS2: "no"
-    network_mode: host
+      DNS1: '127.0.0.1#5300'
+      DNS2: 'no'
+      DHCP_ACTIVE: 'true'
+      DHCP_START: '192.168.100.100' #change accordingly
+      DHCP_END: '192.168.100.251' #change accordingly
+      DHCP_ROUTER: '192.168.100.1' #change accordingly
+      DHCP_rapid_commit: 'true'
+      DHCP_LEASETIME: '24'
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole/:/etc/pihole/'
