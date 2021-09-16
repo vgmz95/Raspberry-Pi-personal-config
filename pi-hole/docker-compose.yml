@@ -6,18 +6,18 @@ services:
     network_mode: host
     environment:
       TZ: 'America/Mexico_City'
-      WEBPASSWORD: 'admin'
+      WEBPASSWORD: 'password'
       network_mode: host
       ServerIP: '192.168.100.2' #change accordingly
-      ServerIPv6: '' #change accordingly
-      DNS1: '127.0.0.1#5300'
-      DNS2: 'no'
+      ServerIPv6: 'fe80::58de:8d40:7e66:faca' #change accordingly
+      PIHOLE_DNS_: '127.0.0.1#5300'
       DHCP_ACTIVE: 'true'
       DHCP_START: '192.168.100.100' #change accordingly
       DHCP_END: '192.168.100.251' #change accordingly
       DHCP_ROUTER: '192.168.100.1' #change accordingly
       DHCP_rapid_commit: 'true'
       DHCP_LEASETIME: '24'
+      WEBTHEME: 'default-dark'
     # Volumes store your data between container upgrades
     volumes:
       - './etc-pihole/:/etc/pihole/'
@@ -26,7 +26,7 @@ services:
     #   https://github.com/pi-hole/docker-pi-hole#note-on-capabilities
     cap_add:
       - NET_ADMIN
-    restart: unless-stopped
+    restart: always
     depends_on:
       - dnscrypt
 
@@ -34,10 +34,9 @@ services:
     container_name: dnscrypt-proxy
     image: klutchell/dnscrypt-proxy:latest
     network_mode: host
-    environment:
-      TZ: 'America/Mexico_City'
     volumes:
+      - '/etc/localtime:/etc/localtime:ro'
       - './etc-dnscrypt-proxy:/config'
     dns:
       - 1.1.1.1
-    restart: unless-stopped
+    restart: always

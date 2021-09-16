@@ -1,31 +1,24 @@
-version: '2'
+version: "2.1"
 services:
-  unifi:
-    image: ryansch/unifi-rpi:latest
-    container_name: unifi
-    restart: always
-    network_mode: host
-    # Uncomment the following to set java options
-    # environment:
-    #   JAVA_OPTS: -Xmx512M
+  unifi-controller:
+    image: ghcr.io/linuxserver/unifi-controller:latest
+    container_name: unifi-controller
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - MEM_LIMIT=1024M #optional
     volumes:
-      # Unifi v5.0.7 creates all of these directories (some remain empty)
-      - config:/var/lib/unifi
-      - log:/usr/lib/unifi/logs
-      - log2:/var/log/unifi
-      - run:/usr/lib/unifi/run
-      - run2:/run/unifi
-      - work:/usr/lib/unifi/work
+      - unifi-config:/config
+    ports:
+      - 3478:3478/udp
+      - 10001:10001/udp
+      - 8080:8080
+      - 8443:8443
+      - 1900:1900/udp #optional
+      - 6789:6789 #optional
+      - 5514:5514/udp #optional
+    restart: always
+
 volumes:
-  config:
-    driver: local
-  log:
-    driver: local
-  log2:
-    driver: local
-  run:
-    driver: local
-  run2:
-    driver: local
-  work:
+  unifi-config:
     driver: local
