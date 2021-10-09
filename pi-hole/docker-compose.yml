@@ -12,7 +12,7 @@ services:
       ServerIPv6: 'fe80::58de:8d40:7e66:faca' #change accordingly
       PIHOLE_DNS_: '127.0.0.1#5300'
       DHCP_ACTIVE: 'true'
-      DHCP_START: '192.168.100.100' #change accordingly
+      DHCP_START: '192.168.100.10' #change accordingly
       DHCP_END: '192.168.100.251' #change accordingly
       DHCP_ROUTER: '192.168.100.1' #change accordingly
       DHCP_rapid_commit: 'true'
@@ -37,6 +37,4 @@ services:
     volumes:
       - '/etc/localtime:/etc/localtime:ro'
       - './etc-dnscrypt-proxy:/config'
-    dns:
-      - 1.1.1.1
     restart: always
