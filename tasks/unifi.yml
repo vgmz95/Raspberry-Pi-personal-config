@@ -1,0 +1,21 @@
+---
+- name: Create unifi folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/unifi"
+    state: directory
+    mode: '0755'
+  become: false
+
+- name: Copy unifi template to Pi.
+  ansible.builtin.copy:
+    src: containers/unifi/docker-compose.yml
+    dest: "{{ config_dir }}/unifi/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart unifi
+
+- name: Ensure unifi is running.
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/unifi/"
+    build: false
+  become: false

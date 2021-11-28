@@ -1,0 +1,21 @@
+---
+- name: Create omada folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/omada"
+    state: directory
+    mode: '0755'
+  become: false
+
+- name: Copy omada template to Pi.
+  ansible.builtin.copy:
+    src: containers/omada/docker-compose.yml
+    dest: "{{ config_dir }}/omada/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart omada
+
+- name: Ensure omada is running.
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/omada/"
+    build: false
+  become: false

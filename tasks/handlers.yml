@@ -1,0 +1,21 @@
+---
+- name: Restart pi-hole
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/pi-hole/"
+    build: false
+    restarted: true
+  become: false
+
+- name: Restart unifi
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/unifi/"
+    build: false
+    restarted: true
+  become: false
+
+- name: Restart omada
+  community.docker.docker_compose:
+    project_src: "{{ config_dir }}/omada/"
+    build: false
+    restarted: true
+  become: false

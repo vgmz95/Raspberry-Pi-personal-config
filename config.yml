@@ -1,0 +1,15 @@
+---
+# Location where configuration files will be stored.
+config_dir: "~/containers"
+
+# Pi-hole configuration.
+pihole_enable: true
+
+# Unifi configuration
+unifi_enable: true
+
+# Omada configuration
+omada_enable: true
+
+# Crontab update script
+crontab_enable: true

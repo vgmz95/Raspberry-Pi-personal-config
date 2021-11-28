@@ -27,7 +27,9 @@ services:
       - '29812:29812'
       - '29812:29812/udp'
       - '29813:29813'
-      - '29813:29813/udp'      
+      - '29813:29813/udp'
+    healthcheck:
+      disable: true      
 volumes:
   omada-data:
     driver: local
