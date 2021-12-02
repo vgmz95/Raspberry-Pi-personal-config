@@ -2,7 +2,7 @@
   ansible.builtin.copy:
     src: containers/update_container_images.sh
     dest: "{{ config_dir }}"
-    mode: '0640'
+    mode: '0740'
   become: false
 
 - name: Ensure a job that runs at 3 am and updates docker containers exists"
