@@ -1,4 +1,4 @@
-version: '2'
+version: '3.3'
 services:
   omada:
     image: 'mbentley/omada-controller:latest'
@@ -20,16 +20,13 @@ services:
       - '8088:8088'
       - '8043:8043'
       - '8843:8843'
-      - '29810:29810'
       - '29810:29810/udp'
       - '29811:29811'
-      - '29811:29811/udp'
       - '29812:29812'
-      - '29812:29812/udp'
       - '29813:29813'
-      - '29813:29813/udp'
+      - '29814:29814'
     healthcheck:
-      disable: true      
+      disable: true
 volumes:
   omada-data:
     driver: local
