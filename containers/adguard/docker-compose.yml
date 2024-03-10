@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  adguardhome:
+    container_name: adguardhome
+    image: adguard/adguardhome
+    restart: unless-stopped
+    volumes:
+      - './workdir:/opt/adguardhome/work'
+      - './confdir:/opt/adguardhome/conf'
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
