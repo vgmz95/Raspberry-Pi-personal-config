@@ -33,6 +33,10 @@
       ansible.builtin.import_tasks: tasks/omada.yml
       when: omada_enable
 
+    - name: Set up adguard.
+      ansible.builtin.import_tasks: tasks/adguard.yml
+      when: adguard_enable
+
     - name: Set up crontab job
       ansible.builtin.import_tasks: tasks/crontab.yml
       when: crontab_enable

@@ -1,21 +1,28 @@
 ---
 - name: Restart pi-hole
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/pi-hole/"
-    build: false
-    restarted: true
+    build: never
+    state: restarted
   become: false
 
 - name: Restart unifi
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/unifi/"
-    build: false
-    restarted: true
+    build: never
+    state: restarted
   become: false
 
 - name: Restart omada
-  community.docker.docker_compose:
+  community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/omada/"
-    build: false
-    restarted: true
+    build: never
+    state: restarted
+  become: false
+
+- name: Restart adguard
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/adguard/"
+    build: never
+    state: restarted
   become: false

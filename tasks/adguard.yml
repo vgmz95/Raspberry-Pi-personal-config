@@ -1,0 +1,21 @@
+---
+- name: Create adguard folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/adguard"
+    state: directory
+    mode: '0755'
+  become: false
+
+- name: Copy adguard template to Pi.
+  ansible.builtin.copy:
+    src: containers/adguard/docker-compose.yml
+    dest: "{{ config_dir }}/adguard/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart adguard
+
+- name: Ensure adguard is running.
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/adguard/"
+    build: never
+  become: false

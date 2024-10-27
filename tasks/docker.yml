@@ -34,16 +34,25 @@
       - python3-pip
       - git
       - rsync
+      - docker-compose-plugin
+      - resolvconf
     state: present
   when: ansible_facts.os_family == "Debian"
 
-- name: Install Docker Compose using Pip.
-  ansible.builtin.pip:
-    name: docker-compose
+- name: Ensure dependencies are installed (Archlinux).
+  community.general.pacman:
+    name:
+      - libffi
+      - openssl
+      - base-devel
+      - python-pip
+      - git
+      - rsync
+      - docker-compose-plugin
     state: present
-    executable: pip3
+  when: ansible_facts.os_family == "Archlinux"
 
-- name: Ensure {{ ansible_user }} user is added to the docker group.
+- name: "Ensure user is added to the docker group: {{ ansible_user }}"
   ansible.builtin.user:
     name: "{{ ansible_user }}"
     groups: docker
