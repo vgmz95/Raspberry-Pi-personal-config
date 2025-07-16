@@ -1,4 +1,3 @@
-version: '3.3'
 services:
   adguardhome:
     container_name: adguardhome
@@ -7,6 +6,7 @@ services:
     volumes:
       - './workdir:/opt/adguardhome/work'
       - './confdir:/opt/adguardhome/conf'
+      - '/etc/localtime:/etc/localtime:ro'
     network_mode: host
     cap_add:
       - NET_ADMIN
