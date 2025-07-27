@@ -2,17 +2,7 @@
 # Location where configuration files will be stored.
 config_dir: "~/containers"
 
-# Pi-hole configuration.
-pihole_enable: false
-
-# Unifi configuration
-unifi_enable: true
-
-# Omada configuration
-omada_enable: false
-
-# Crontab update script
-crontab_enable: true
-
-# AdGuard configuration
+# Feature flags
 adguard_enable: true
+open_speed_test_enable: true
+watchtower_enable: true

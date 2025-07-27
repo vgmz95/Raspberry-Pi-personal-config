@@ -1,0 +1,22 @@
+---
+- name: Create watchtower folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/watchtower"
+    state: directory
+    mode: '0755'
+  become: false
+
+- name: Copy watchtower template to Pi.
+  ansible.builtin.copy:
+    src: containers/watchtower/docker-compose.yml
+    dest: "{{ config_dir }}/watchtower/docker-compose.yml"
+    mode: '0640'
+  become: false
+  notify: Restart watchtower
+
+- name: Ensure watchtower is running.
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/watchtower/"
+    build: never
+  become: false
+

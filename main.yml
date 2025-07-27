@@ -21,22 +21,14 @@
     - name: Setup Docker.
       ansible.builtin.import_tasks: tasks/docker.yml
 
-    - name: Set up Pi Hole.
-      ansible.builtin.import_tasks: tasks/pi-hole.yml
-      when: pihole_enable
-
-    - name: Set up unifi.
-      ansible.builtin.import_tasks: tasks/unifi.yml
-      when: unifi_enable
-
-    - name: Set up omada.
-      ansible.builtin.import_tasks: tasks/omada.yml
-      when: omada_enable
-
-    - name: Set up adguard.
+    - name: Set up AdGuard.
       ansible.builtin.import_tasks: tasks/adguard.yml
       when: adguard_enable
 
-    - name: Set up crontab job
-      ansible.builtin.import_tasks: tasks/crontab.yml
-      when: crontab_enable
+    - name: Set up OpenSpeedTest.
+      ansible.builtin.import_tasks: tasks/openspeedtest.yml
+      when: open_speed_test_enable
+
+    - name: Set up Watchtower.
+      ansible.builtin.import_tasks: tasks/watchtower.yml
+      when: watchtower_enable
