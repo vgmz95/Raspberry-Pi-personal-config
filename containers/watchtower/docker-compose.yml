@@ -1,0 +1,12 @@
+services:
+  watchtower:
+    image: ghcr.io/containrrr/watchtower:latest
+    restart: unless-stopped
+    container_name: watchtower
+    environment:
+      - TZ=America/Mexico_City
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_SCHEDULE=0 0 2 * * *
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/etc/localtime:/etc/localtime:ro"

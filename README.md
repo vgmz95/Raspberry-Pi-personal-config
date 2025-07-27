@@ -6,4 +6,3 @@ docker-compose and ansible playbook files (based on https://github.com/geerlingg
 - Install ansible: https://github.com/geerlingguy/internet-pi?tab=readme-ov-file#setup
 - Configure ssh login without password: https://www.raspberrypi.com/documentation/computers/remote-access.html#configure-ssh-without-a-password
 - Run playbook: `ansible-playbook -i inventory.ini main.yml`
-- Enable DHCP in AdGuard
