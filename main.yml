@@ -18,11 +18,11 @@
       ansible.builtin.import_tasks: tasks/handlers.yml
 
   tasks:
-    - name: Configure unattended upgrades
-      ansible.builtin.import_tasks: tasks/unattended_upgrades.yml
-
     - name: Setup Docker.
       ansible.builtin.import_tasks: tasks/docker.yml
+
+    - name: Configure unattended upgrades
+      ansible.builtin.import_tasks: tasks/unattended_upgrades.yml
 
     - name: Set up AdGuard.
       ansible.builtin.import_tasks: tasks/adguard.yml
