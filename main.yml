@@ -1,5 +1,6 @@
 ---
-- hosts: raspberry
+- name: Configure Raspberry Pi
+  hosts: raspberry
   become: true
 
   pre_tasks:
