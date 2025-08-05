@@ -6,3 +6,13 @@ config_dir: "~/containers"
 adguard_enable: true
 open_speed_test_enable: true
 watchtower_enable: true
+
+# Unattended-upgrades configuration
+unattended_origins_patterns:
+  - 'origin=Debian,codename=${distro_codename},label=Debian-Security'
+  - 'origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation'
+  - 'origin=Docker'
+unattended_systemd_timer_override: true
+unattended_apt_daily_upgrade_oncalendar: "*-*-* 03:30"
+unattended_apt_daily_upgrade_randomizeddelaysec: '0'
+unattended_automatic_reboot: true

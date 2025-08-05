@@ -18,6 +18,9 @@
       ansible.builtin.import_tasks: tasks/handlers.yml
 
   tasks:
+    - name: Configure unattended upgrades
+      ansible.builtin.import_tasks: tasks/unattended_upgrades.yml
+
     - name: Setup Docker.
       ansible.builtin.import_tasks: tasks/docker.yml
 

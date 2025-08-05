@@ -1,0 +1,11 @@
+---
+- name: Configure unattended-upgrades
+  ansible.builtin.include_role:
+    name: hifis.toolkit.unattended_upgrades
+  vars:
+    unattended_origins_patterns: "{{ unattended_origins_patterns }}"
+    unattended_systemd_timer_override: "{{ unattended_systemd_timer_override }}"
+    unattended_apt_daily_upgrade_oncalendar: "{{ unattended_apt_daily_upgrade_oncalendar }}"
+    unattended_apt_daily_upgrade_randomizeddelaysec: "{{ unattended_apt_daily_upgrade_randomizeddelaysec }}"
+    unattended_automatic_reboot: "{{ unattended_automatic_reboot }}"
+
