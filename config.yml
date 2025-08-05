@@ -12,9 +12,9 @@ watchtower_enable: true
 unattended_systemd_timer_override: true
 # apt-daily-upgrade timer
 unattended_apt_daily_upgrade_oncalendar: "*-*-* 03:30"
-unattended_apt_daily_upgrade_randomizeddelaysec: '0'
+unattended_apt_daily_upgrade_randomizeddelaysec: "0"
 unattended_origins_patterns:
-  - 'origin=Debian,codename=${distro_codename},label=Debian-Security'
-  - 'origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation'
-  - 'origin=Docker'
+  - "origin=Debian,codename=${distro_codename},label=Debian-Security"
+  - "origin=Raspberry Pi Foundation,codename=${distro_codename},label=Raspberry Pi Foundation"
+  - "origin=Docker"
 unattended_automatic_reboot: true

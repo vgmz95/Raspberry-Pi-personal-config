@@ -3,14 +3,14 @@
   ansible.builtin.file:
     path: "{{ config_dir }}/openspeedtest"
     state: directory
-    mode: '0755'
+    mode: "0755"
   become: false
 
 - name: Copy openspeedtest template to Pi.
   ansible.builtin.copy:
     src: containers/openspeedtest/docker-compose.yml
     dest: "{{ config_dir }}/openspeedtest/docker-compose.yml"
-    mode: '0640'
+    mode: "0640"
   become: false
   notify: Restart openspeedtest
 
@@ -19,4 +19,3 @@
     project_src: "{{ config_dir }}/openspeedtest/"
     build: never
   become: false
-
