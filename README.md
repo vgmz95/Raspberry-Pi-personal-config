@@ -8,5 +8,6 @@ docker-compose and ansible playbook files (based on https://github.com/geerlingg
 - Run playbook:
 ```
 uvx --from ansible-core ansible-galaxy collection install -r requirements.yml
+export ANSIBLE_ALLOW_BROKEN_CONDITIONALS=true
 uvx --from ansible-core ansible-playbook -i inventory.ini main.yml
 ```
