@@ -7,6 +7,16 @@ adguard_enable: true
 open_speed_test_enable: true
 watchtower_enable: true
 
+# Network configuration
+network_conn_name: "eth0"
+network_interface: "eth0"
+network_dns4:
+  - "8.8.8.8"
+  - "8.8.4.4"
+network_dns6:
+  - "2001:4860:4860::8888"
+  - "2001:4860:4860::8844"
+
 # Unattended-upgrades configuration
 # https://github.com/hifis-net/ansible-collection-toolkit/tree/main/roles/unattended_upgrades
 unattended_systemd_timer_override: true
