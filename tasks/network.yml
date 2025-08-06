@@ -1,0 +1,19 @@
+---
+- name: Ensure NetworkManager tools are present
+  ansible.builtin.package:
+    name: network-manager
+    state: present
+
+- name: Configure network connection.
+  community.general.nmcli:
+    conn_name: "{{ network_conn_name }}"
+    ifname: "{{ network_interface }}"
+    type: ethernet
+    autoconnect: true
+    method4: auto
+    method6: auto
+    dns4: "{{ network_dns4 }}"
+    dns4_ignore_auto: true
+    dns6: "{{ network_dns6 }}"
+    dns6_ignore_auto: true
+    state: present
