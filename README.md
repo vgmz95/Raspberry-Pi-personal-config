@@ -2,7 +2,7 @@
 docker-compose and ansible playbook files (based on https://github.com/geerlingguy/internet-pi)
 
 ## Steps
-- Assign static address to Pi:  https://pimylifeup.com/raspberry-pi-static-ip-address/
+- Assign static address to Pi on router
 - Configure ssh login without password: https://www.raspberrypi.com/documentation/computers/remote-access.html#configure-ssh-without-a-password
 - Install [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#installation)
 - Run playbook:
