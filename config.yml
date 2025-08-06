@@ -8,6 +8,7 @@ open_speed_test_enable: true
 watchtower_enable: true
 
 # Network configuration
+# https://docs.ansible.com/ansible/latest/collections/community/general/nmcli_module.html
 network_conn_name: "eth0"
 network_interface: "eth0"
 network_dns4:

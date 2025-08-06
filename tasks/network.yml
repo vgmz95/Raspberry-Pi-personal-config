@@ -1,4 +1,9 @@
 ---
+- name: Ensure NetworkManager tools are present
+  ansible.builtin.package:
+    name: network-manager
+    state: present
+
 - name: Configure network connection.
   community.general.nmcli:
     conn_name: "{{ network_conn_name }}"
