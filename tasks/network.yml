@@ -17,3 +17,13 @@
     dns6: "{{ network_dns6 }}"
     dns6_ignore_auto: true
     state: present
+
+- name: Increase net.core.rmem_max
+  ansible.posix.sysctl:
+    name: net.core.rmem_max
+    value: 7500000
+
+- name: Increase net.core.wmem_max
+  ansible.posix.sysctl:
+    name: net.core.wmem_max
+    value: 7500000
