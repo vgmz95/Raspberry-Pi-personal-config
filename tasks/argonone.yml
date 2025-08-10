@@ -1,0 +1,19 @@
+---
+- name: Check if Argon ONE script is already present.
+  ansible.builtin.command: which argon-config
+  failed_when: false
+  changed_when: false
+  check_mode: false
+  register: argon_config_command_result
+
+- name: Download Argon ONE install script.
+  ansible.builtin.get_url:
+    url: https://raw.githubusercontent.com/okunze/Argon40-ArgonOne-Script/master/source/argon1.sh
+    dest: /tmp/argon1.sh
+    mode: "0775"
+  when: argon_config_command_result.rc == 1
+
+- name: Run Argon ONE install script.
+  ansible.builtin.command: /tmp/argon1.sh
+  when: argon_config_command_result.rc == 1
+  changed_when: argon_config_command_result.rc == 1

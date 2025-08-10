@@ -22,6 +22,9 @@
     - name: Configure network.
       ansible.builtin.import_tasks: tasks/network.yml
 
+    - name: Install Argon ONE script.
+      ansible.builtin.import_tasks: tasks/argonone.yml
+
     - name: Setup Docker.
       ansible.builtin.import_tasks: tasks/docker.yml
 
