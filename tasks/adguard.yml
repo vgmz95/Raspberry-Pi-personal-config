@@ -12,10 +12,27 @@
     dest: "{{ config_dir }}/adguard/docker-compose.yml"
     mode: "0640"
   become: false
-  notify: Restart adguard
+  register: adguard_compose
 
-- name: Ensure adguard is running.
+- name: Create adguard confdir folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/adguard/confdir"
+    state: directory
+    mode: "0755"
+  become: false
+
+- name: Copy AdGuard configuration to Pi.
+  ansible.builtin.template:
+    src: containers/adguard/confdir/AdGuardHome.yaml.j2
+    dest: "{{ config_dir }}/adguard/confdir/AdGuardHome.yaml"
+    mode: "0640"
+  become: false
+  register: adguard_config
+
+- name: Start or restart adguard.
   community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/adguard/"
     build: never
+    state: restarted
+  when: adguard_compose.changed or adguard_config.changed
   become: false
