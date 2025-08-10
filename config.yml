@@ -8,8 +8,9 @@ open_speed_test_enable: true
 watchtower_enable: true
 
 # AdGuard configuration
+# https://github.com/AdguardTeam/Adguardhome/wiki/Configuration#configuration-file
 adguard_user: "victor"
-adguard_password: "PASSWORD_HASH_PLACEHOLDER"
+adguard_password: "PASSWORD_HASH_PLACEHOLDER" # https://github.com/AdguardTeam/Adguardhome/wiki/Configuration#password-reset
 adguard_upstream_dns:
   - "h3://dns.google/dns-query"
 adguard_bootstrap_dns:
