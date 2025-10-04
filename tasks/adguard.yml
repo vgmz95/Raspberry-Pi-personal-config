@@ -29,10 +29,15 @@
   become: false
   register: adguard_config
 
-- name: Start or restart adguard.
+- name: Request adguard restart when compose and config updated.
+  ansible.builtin.debug:
+    msg: "Restarting AdGuard to apply updated compose and config files."
+  changed_when: adguard_compose.changed and adguard_config.changed
+  when: adguard_compose.changed or adguard_config.changed
+  notify: Restart adguard
+
+- name: Ensure adguard is running.
   community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/adguard/"
     build: never
-    state: restarted
-  when: adguard_compose.changed or adguard_config.changed
   become: false

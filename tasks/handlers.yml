@@ -1,4 +1,11 @@
 ---
+- name: Restart adguard
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/adguard/"
+    build: never
+    state: restarted
+  become: false
+
 - name: Restart openspeedtest
   community.docker.docker_compose_v2:
     project_src: "{{ config_dir }}/openspeedtest/"
