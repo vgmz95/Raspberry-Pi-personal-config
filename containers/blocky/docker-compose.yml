@@ -1,0 +1,49 @@
+services:
+  blocky:
+    image: spx01/blocky
+    container_name: blocky
+    restart: unless-stopped
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "4000:4000/tcp"
+    networks:
+      - ipv6net
+    environment:
+      - TZ=America/Mexico_City
+    configs:
+      - source: config.yml
+        target: /app/config.yml
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+networks:
+  ipv6net:
+    driver: bridge
+    enable_ipv6: true
+
+configs:
+  config.yml:
+    content: |
+      upstreams:
+        strategy: strict
+        groups:
+          default:
+            - https://cloudflare-dns.com/dns-query
+            - https://dns.google/dns-query
+      blocking:
+        denylists:
+          ads:
+            - https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/wildcard/multi.txt
+        clientGroupsBlock:
+          default:
+            - ads
+      ports:
+        dns: 53
+        http: 4000
+      dnssec:
+        validate: true
+      log:
+        level: info
+      queryLog:
+        type: none
