@@ -5,10 +5,7 @@ This repo is an Ansible playbook for configuring a Raspberry Pi (inspired by `ge
 ## What this repo currently does
 - Provisions a Raspberry Pi host (group `raspberry`) via `main.yml`.
 - Installs/starts Docker and deploys container stacks into `config_dir` on the Pi.
-- Optionally configures services via feature flags in `config.yml`:
-  - AdGuard Home (`adguard_enable`)
-  - OpenSpeedTest (`open_speed_test_enable`)
-  - Watchtower (`watchtower_enable`)
+- Optionally configures services via feature flags in `config.yml`.
 - Includes optional network tuning/config (`tasks/network.yml`).
 
 ## Key entrypoints
