@@ -40,8 +40,7 @@ Use the following commands to validate the playbook:
 ```bash
 uvx --from ansible-core ansible-playbook --syntax-check -i inventory.ini main.yml
 
-uvx --from ansible-core ansible-playbook --check --diff -i inventory.ini main.yml
-ansible-lint .
+uvx --from ansible-lint ansible-lint
 ```
 
 Agents should not try to run the playbook, the following command will fail:
