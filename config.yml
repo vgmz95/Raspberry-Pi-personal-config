@@ -3,8 +3,9 @@
 config_dir: "~/containers"
 
 # Feature flags
-adguard_enable: true
-open_speed_test_enable: true
+blocky_enable: true
+adguard_enable: false
+open_speed_test_enable: false
 watchtower_enable: true
 
 # AdGuard configuration
