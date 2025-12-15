@@ -43,7 +43,7 @@ uvx --from ansible-core ansible-playbook --syntax-check -i inventory.ini main.ym
 uvx --from ansible-lint ansible-lint
 ```
 
-Agents should not try to run the playbook, the following command will fail:
+The agent should not try to run the playbook, the following command will fail:
 ```bash
 uvx --from ansible-core ansible-playbook -i inventory.ini main.yml
 ```
