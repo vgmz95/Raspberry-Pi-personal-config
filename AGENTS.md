@@ -31,16 +31,20 @@ This repo is an Ansible playbook for configuring a Raspberry Pi (inspired by `ge
 3. Add an optional handler entry in `tasks/handlers.yml` if restart-on-change is needed.
 4. Import it from `main.yml` behind a feature flag in `config.yml`.
 
-## Playbook validation
-Use the following command to validate playbook
+## Playbook validation and execution
+This agent runs in an environment that does not necessarily have access to the actual Raspberry Pi being configured, so only offline/static validation can be performed.
+
+`ansible-core` and `ansible-lint` are available on `PATH`; use `uvx` for Python/Ansible execution.
+
+Use the following commands to validate the playbook:
 ```bash
 uvx --from ansible-core ansible-playbook --syntax-check -i inventory.ini main.yml
+
 uvx --from ansible-core ansible-playbook --check --diff -i inventory.ini main.yml
+ansible-lint .
 ```
 
-## Playbook execution
-Agents should not try to run the playbook, the following command will fail
+Agents should not try to run the playbook, the following command will fail:
 ```bash
 uvx --from ansible-core ansible-playbook -i inventory.ini main.yml
 ```
-
