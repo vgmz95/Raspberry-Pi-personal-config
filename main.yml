@@ -31,6 +31,10 @@
     - name: Configure unattended upgrades
       ansible.builtin.import_tasks: tasks/unattended_upgrades.yml
 
+    - name: Set up Blocky.
+      ansible.builtin.import_tasks: tasks/blocky.yml
+      when: blocky_enable
+
     - name: Set up AdGuard.
       ansible.builtin.import_tasks: tasks/adguard.yml
       when: adguard_enable

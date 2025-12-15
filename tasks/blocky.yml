@@ -1,0 +1,21 @@
+---
+- name: Create blocky folder on Pi.
+  ansible.builtin.file:
+    path: "{{ config_dir }}/blocky"
+    state: directory
+    mode: "0755"
+  become: false
+
+- name: Copy blocky template to Pi.
+  ansible.builtin.copy:
+    src: containers/blocky/docker-compose.yml
+    dest: "{{ config_dir }}/blocky/docker-compose.yml"
+    mode: "0640"
+  become: false
+  notify: Restart blocky
+
+- name: Ensure blocky is running.
+  community.docker.docker_compose_v2:
+    project_src: "{{ config_dir }}/blocky/"
+    build: never
+  become: false

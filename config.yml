@@ -3,6 +3,7 @@
 config_dir: "~/containers"
 
 # Feature flags
+blocky_enable: false
 adguard_enable: true
 open_speed_test_enable: true
 watchtower_enable: true
