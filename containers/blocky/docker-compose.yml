@@ -1,6 +1,6 @@
 services:
   blocky:
-    image: spx01/blocky
+    image: ghcr.io/0xerr0r/blocky
     container_name: blocky
     restart: unless-stopped
     ports:
@@ -29,10 +29,10 @@ configs:
         strategy: strict
         groups:
           default:
-            - "https://cloudflare-dns.com/dns-query"
-            - "https://dns.google/dns-query"
+            - "https://dns.cloudflare.com/dns-query"
             - "https://dns10.quad9.net/dns-query"
-            - "https://anycast.dns.nextdns.io"
+            - "https://dns.google/dns-query"
+            - "https://dns.nextdns.io"
       blocking:
         denylists:
           ads:
@@ -43,8 +43,6 @@ configs:
       ports:
         dns: 53
         http: 4000
-      dnssec:
-        validate: true
       log:
         level: info
       queryLog:
@@ -52,5 +50,4 @@ configs:
       bootstrapDns:
         - "https://[2606:4700:4700::1111]/dns-query"
         - "https://1.1.1.1/dns-query"
-        - "https://[2001:4860:4860::8888]/dns-query"
-        - "https://8.8.8.8/dns-query"
+        - "192.168.100.1"
