@@ -1,0 +1,37 @@
+{
+  "name": "Ansible Development",
+  "image": "ghcr.io/astral-sh/uv:debian-slim",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers/features/git:1": {}
+  },
+  "postCreateCommand": "uv tool install ansible-core && uv tool install ansible-lint",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "redhat.ansible",
+        "redhat.vscode-yaml",
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+      ],
+      "settings": {
+        "ansible.python.interpreterPath": "/usr/local/bin/python",
+        "files.associations": {
+          "*.yml": "yaml",
+          "*.yaml": "yaml"
+        },
+        "yaml.schemas": {
+          "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json": [
+            "playbooks/*.yml",
+            "playbooks/*.yaml",
+            "**/tasks/*.yml",
+            "**/tasks/*.yaml",
+            "**/handlers/*.yml",
+            "**/handlers/*.yaml"
+          ]
+        }
+      }
+    }
+  },
+  "remoteUser": "root"
+}
