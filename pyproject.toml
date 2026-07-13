@@ -1,0 +1,13 @@
+[project]
+name = "raspberry-pi-personal-config"
+version = "0.1.0"
+description = "Ansible playbook that provisions a single Raspberry Pi with self-hosted container stacks."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "ansible-core",
+    "ansible-lint",
+]
+
+[tool.uv]
+package = false

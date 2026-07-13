@@ -7,7 +7,8 @@ docker-compose and ansible playbook files (based on https://github.com/geerlingg
 - Install [uv](https://github.com/astral-sh/uv?tab=readme-ov-file#installation)
 - Run playbook:
 ```
-uvx --from ansible-core ansible-galaxy collection install -r requirements.yml
+uv sync
+uv run ansible-galaxy collection install -r requirements.yml
 export ANSIBLE_ALLOW_BROKEN_CONDITIONALS=true
-uvx --from ansible-core ansible-playbook -i inventory.ini main.yml
+uv run ansible-playbook -i inventory.ini main.yml
 ```
